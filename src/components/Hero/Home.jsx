@@ -6,7 +6,6 @@ import SignIn from "../../Modal/SignIn/SignIn";
 import clsx from "clsx";
 
 function Home() {
-
   // functions
   const handleSignIn = (event) => {
     event.preventDefault();
@@ -15,39 +14,86 @@ function Home() {
     event.preventDefault();
   };
 
+  // ===========> states
+  const [email, Set_Email] = useState("");
+  const [password, Set_Password] = useState("");
+  const [firstName, Set_First_Name] = useState("");
+  const [lastName, Set_Last_Name] = useState("");
+  const [conformPassword, Set_Conform_Password] = useState("");
+
+  // ===========> login + register object
+  const Login = [
+    {
+      type: "text",
+      id: "email",
+      label: "Email Address",
+      state: email,
+      handle: Set_Email,
+    },
+    {
+      type: "password",
+      id: "password",
+      label: "Password",
+      state: password,
+      handle: Set_Password,
+    },
+  ];
+
+  const Resgister = [
+    {
+      type: "text",
+      id: "firstName",
+      label: "First Name",
+      state: firstName,
+      handle: Set_First_Name,
+    },
+    {
+      type: "text",
+      id: "lastName",
+      label: "Last Name",
+      state: lastName,
+      handle: Set_Last_Name,
+    },
+    {
+      type: "text",
+      id: "email",
+      label: "Email Address",
+      label: "Last Name",
+      state: email,
+      handle: Set_Email,
+    },
+    {
+      type: "password",
+      id: "password",
+      label: "Password",
+      state: password,
+      handle: Set_Password,
+    },
+    {
+      type: "password",
+      id: "conformPassword",
+      label: "Conform Password",
+      state: conformPassword,
+      handle: Set_Conform_Password,
+    },
+  ];
+
   return (
     <>
       <div className={styles.home}>
         <div className={styles.main}>
-          {/* overly on image */}
-          <div className={styles.overly}></div>
-          {/* <div className={styles.balance}>
-            <img src="/Assets/balance2.png" alt="" />
-          </div> */}
-          {/* Ai bot image */}
-          <div className={styles.bot}>
-            <img src="/Assets/bot.png" alt="" />
-          </div>
-          {/* ======>text */}
-          <div className={styles.textPortion}>
-            <h1>Welcome to our AI legal bot!</h1>
+          {/* =======> left postion */}
+          <div className={styles.leftPortion}>
+            <h1>WELCOME TO OUR AI LEGAL BOT</h1>
             <p>
-              {" "}
-              Our bot is designed to assist with any legal questions you may
-              have. It is trained on a variety <br /> of legal topics and is
-              able to provide concise and accurate information.
+              Lorem ipsum dolor sit amet consectetur. Ut nunc viverra viverra
+              sed ornare amet integer. Id urna massa egestas ac vel sed id.
+              Ipsum pulvinar hac et pellentesque pellentesque facilisis.
+              Adipiscing ut eget pharetra nulla vitae enim. Sodales auctor
+              libero velit a pretium laoreet.
             </p>
-            {/* ========> login + register button */}
+            {/* =======>buttons */}
             <div className={styles.buttons}>
-              {/* =====>Login button */}
-              <button
-                data-bs-toggle="modal"
-                data-bs-target="#signIn"
-                className={styles.btn}
-              >
-                <BiLockAlt />
-                Login
-              </button>
               <button
                 data-bs-toggle="modal"
                 data-bs-target="#register"
@@ -56,7 +102,19 @@ function Home() {
                 <BiRegistered />
                 Register
               </button>
+              <button
+                data-bs-toggle="modal"
+                data-bs-target="#signIn"
+                className={clsx(styles.btn, styles.btn2)}
+              >
+                <BiLockAlt />
+                Sign In
+              </button>
             </div>
+          </div>
+          {/* =======> right portion */}
+          <div className={styles.rightPortion}>
+            <img src="/Assets/bot.png" alt="seo text here" />
           </div>
         </div>
       </div>
@@ -84,8 +142,12 @@ function Home() {
                     <div key={index} className={styles.Input}>
                       <label htmlFor="">{inpt.label}</label>
                       <input
+                        onChange={(e) => {
+                          inpt.handle(e.target.value);
+                        }}
                         required
                         type={inpt.type}
+                        value={inpt.state}
                         name={inpt.id}
                         id={inpt.label}
                         placeholder={inpt.label}
@@ -130,7 +192,11 @@ function Home() {
                     <div key={index} className={styles.Input}>
                       <label htmlFor="">{inpt.label}</label>
                       <input
+                        onChange={(e) => {
+                          inpt.handle(e.target.value);
+                        }}
                         required
+                        value={inpt.state}
                         type={inpt.type}
                         name={inpt.id}
                         id={inpt.id}
@@ -145,57 +211,16 @@ function Home() {
                   type="submit"
                   className={clsx(styles.btn, styles.signIn)}
                 >
-                  Sign In
+                  Register
                 </button>
               </div>
             </form>
           </div>
         </div>
       </div>
+      
     </>
   );
 }
-
-
-const Login = [
-  {
-    type: "text",
-    id: "email",
-    label: "Email Address",
-  },
-  {
-    type: "password",
-    id: "password",
-    label: "Password",
-  },
-];
-
-const Resgister = [
-  {
-    type: "text",
-    id: "firstName",
-    label: "First Name",
-  },
-  {
-    type: "text",
-    id: "lastName",
-    label: "Last Name",
-  },
-  {
-    type: "text",
-    id: "email",
-    label: "Email Address",
-  },
-  {
-    type: "password",
-    id: "password",
-    label: "Password",
-  },
-  {
-    type: "password",
-    id: "conformPassword",
-    label: "Conform Password",
-  },
-];
 
 export default Home;

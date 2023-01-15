@@ -5,7 +5,7 @@
 }
 
 html {
-  font-family: "Poppins", sans-serif;
+  font-family: "Space Mono", monospace;
 }
 .modal-dialog {
   width: 420px !important;
@@ -21,8 +21,7 @@ html {
   gap: 30px !important;
   padding: 60px 30px !important;
 }
-.secModal{
-  padding: 40px 30px !important;
+.secModal {
   gap: 20px !important;
 }
 
@@ -34,7 +33,7 @@ html {
     padding: 0px 22px;
     margin: 0px !important;
   }
-  .modal{
+  .modal {
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
